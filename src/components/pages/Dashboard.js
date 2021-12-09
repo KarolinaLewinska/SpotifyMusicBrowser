@@ -1,27 +1,21 @@
 import React, { useState } from 'react';
-
-import {
-  initiateGetResult,
-  initiateLoadMoreAlbums,
-  initiateLoadMorePlaylist,
-  initiateLoadMoreArtists
-} from '../actions/result';
+import { getResults, getMoreAlbums, getMoreArtists, getMorePlaylists } from '../../actions/music-results';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import SearchResult from './SearchResult';
-import SearchForm from './SearchForm';
+import MusicSearchResult from '../searching/MusicSearchResult';
+import MusicSearchForm from '../searching/MusicSearchForm';
 import Header from './Header';
 import Loader from './Loader';
 
 const Dashboard = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('albums');
-  const { isValidSession, history } = props;
+  const { isSessionActive, history } = props;
 
-  const handleSearch = (searchTerm) => {
-    if (isValidSession()) {
+  const handleMusicSearch = (searchedMusic) => {
+    if (isSessionActive()) {
       setIsLoading(true);
-      props.dispatch(initiateGetResult(searchTerm)).then(() => {
+      props.dispatch(getResults(searchedMusic)).then(() => {
         setIsLoading(false);
         setSelectedCategory('albums');
       });
@@ -35,19 +29,19 @@ const Dashboard = (props) => {
     }
   };
 
-  const loadMore = async (type) => {
-    if (isValidSession()) {
+  const showMoreResults = async (type) => {
+    if (isSessionActive()) {
       const { dispatch, albums, artists, playlist } = props;
       setIsLoading(true);
       switch (type) {
         case 'albums':
-          await dispatch(initiateLoadMoreAlbums(albums.next));
+          await dispatch(getMoreAlbums(albums.next));
           break;
         case 'artists':
-          await dispatch(initiateLoadMoreArtists(artists.next));
+          await dispatch(getMoreArtists(artists.next));
           break;
         case 'playlist':
-          await dispatch(initiateLoadMorePlaylist(playlist.next));
+          await dispatch(getMorePlaylists(playlist.next));
           break;
         default:
       }
@@ -71,18 +65,12 @@ const Dashboard = (props) => {
 
   return (
     <React.Fragment>
-      {isValidSession() ? (
+      {isSessionActive() ? (
         <div>
           <Header />
-          <SearchForm handleSearch={handleSearch} />
-          <Loader show={isLoading}>Loading...</Loader>
-          <SearchResult
-            result={result}
-            loadMore={loadMore}
-            setCategory={setCategory}
-            selectedCategory={selectedCategory}
-            isValidSession={isValidSession}
-          />
+          <MusicSearchForm handleMusicSearch={handleMusicSearch} />
+          <Loader show={isLoading}>Trwa wczytywanie...</Loader>
+          <MusicSearchResult result={result} showMoreResults={showMoreResults} setCategory={setCategory} selectedCategory={selectedCategory} isSessionActive={isSessionActive}/>
         </div>
       ) : (
         <Redirect

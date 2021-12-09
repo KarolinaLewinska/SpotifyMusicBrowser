@@ -11,11 +11,11 @@ const Loader = (props) => {
 
   useEffect(() => {
     if (props.show) {
-      loader.classList.remove('hide');
-      document.body.classList.add('loader-open');
+      loader.classList.remove('hideElement');
+      document.body.classList.add('visibleLoader');
     } else {
-      loader.classList.add('hide');
-      document.body.classList.remove('loader-open');
+      loader.classList.add('hideElement');
+      document.body.classList.remove('visibleLoader');
     }
   }, [loader, props.show]);
 

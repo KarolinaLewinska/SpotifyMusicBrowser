@@ -1,16 +1,16 @@
-import { SET_ALBUMS, ADD_ALBUMS } from '../utils/constants';
+import { GET_ALBUMS, SET_ALBUMS } from '../utils/music-constants';
 
 const albumsReducer = (state = {}, action) => {
   const { albums } = action;
   switch (action.type) {
-    case SET_ALBUMS:
-      return albums;
-    case ADD_ALBUMS:
+    case GET_ALBUMS:
       return {
         ...state,
         next: albums.next,
         items: [...state.items, ...albums.items]
       };
+    case SET_ALBUMS:
+      return albums;
     default:
       return state;
   }

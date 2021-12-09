@@ -1,33 +1,33 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from '../components/Home';
-import RedirectPage from '../components/RedirectPage';
-import Dashboard from '../components/Dashboard';
-import NotFoundPage from '../components/NotFoundPage';
+import Home from '../components/pages/Home';
+import Dashboard from '../components/pages/Dashboard';
+import NotFoundErrorPage from '../errorpages/NotFoundErrorPage';
+import Redirection from './Redirection';
 
 class AppRouter extends React.Component {
   state = {
-    expiryTime: '0'
+    expirationTime: '0'
   };
 
   componentDidMount() {
-    let expiryTime;
+    let expirationTime;
     try {
-      expiryTime = JSON.parse(localStorage.getItem('expiry_time'));
-    } catch (error) {
-      expiryTime = '0';
+      expirationTime = JSON.parse(localStorage.getItem('expiry_time'));
+    } catch (err) {
+      expirationTime = '0';
     }
-    this.setState({ expiryTime });
+    this.setState({ expirationTime });
   }
 
-  setExpiryTime = (expiryTime) => {
-    this.setState({ expiryTime });
+  setExpirationTime = (expirationTime) => {
+    this.setState({ expirationTime });
   };
 
-  isValidSession = () => {
+  isSessionActive = () => {
     const currentTime = new Date().getTime();
-    const expiryTime = this.state.expiryTime;
-    const isSessionValid = currentTime < expiryTime;
+    const expirationTime = this.state.expirationTime;
+    const isSessionValid = currentTime < expirationTime;
 
     return isSessionValid;
   };
@@ -41,15 +41,15 @@ class AppRouter extends React.Component {
               path="/"
               exact={true}
               render={(props) => (
-                <Home isValidSession={this.isValidSession} {...props} />
+                <Home isSessionActive={this.isSessionActive} {...props} />
               )}
             />
             <Route
               path="/change"
               render={(props) => (
-                <RedirectPage
-                  isValidSession={this.isValidSession}
-                  setExpiryTime={this.setExpiryTime}
+                <Redirection
+                  isSessionActive={this.isSessionActive}
+                  setExpirationTime={this.setExpirationTime}
                   {...props}
                 />
               )}
@@ -57,10 +57,10 @@ class AppRouter extends React.Component {
             <Route
               path="/dashboard"
               render={(props) => (
-                <Dashboard isValidSession={this.isValidSession} {...props} />
+                <Dashboard isSessionActive={this.isSessionActive} {...props} />
               )}
             />
-            <Route component={NotFoundPage} />
+            <Route component={NotFoundErrorPage} />
           </Switch>
         </div>
       </BrowserRouter>

@@ -1,22 +1,22 @@
 import React from 'react';
 import _ from 'lodash';
-import { getParamValues } from '../utils/functions';
+import { getParamValues } from '../utils/auth';
 
-export default class RedirectPage extends React.Component {
+export default class Redirection extends React.Component {
   componentDidMount() {
-    const { setExpiryTime, history, location } = this.props;
+    const { setExpirationTime, history, location } = this.props;
     try {
       if (_.isEmpty(location.hash)) {
         return history.push('/dashboard');
       }
 
       const access_token = getParamValues(location.hash);
-      const expiryTime = new Date().getTime() + access_token.expires_in * 1000;
+      const expirationTime = new Date().getTime() + access_token.expires_in * 3000;
       localStorage.setItem('params', JSON.stringify(access_token));
-      localStorage.setItem('expiry_time', expiryTime);
-      setExpiryTime(expiryTime);
+      localStorage.setItem('expiry_time', expirationTime);
+      setExpirationTime(expirationTime);
       history.push('/dashboard');
-    } catch (error) {
+    } catch (err) {
       history.push('/');
     }
   }

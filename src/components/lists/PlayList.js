@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
 import _ from 'lodash';
-import music from '../images/noresults.jpg';
+import { Card } from 'react-bootstrap';
+import defaultImage from '../../images/defaultimage.jpg';
 
 const PlayList = ({ playlist }) => {
   return (
@@ -11,23 +11,15 @@ const PlayList = ({ playlist }) => {
           {playlist.items.map((item, index) => {
             return (
               <React.Fragment key={index}>
-                <Card style={{ width: '18rem' }}>
-                  <a
-                    target="_blank"
-                    href={item.external_urls.spotify}
-                    rel="noopener noreferrer"
-                    className="card-image-link"
-                  >
-                    {!_.isEmpty(item.images) ? (
-                      <Card.Img variant="top" src={item.images[0].url} alt="" />
-                    ) : (
-                      <img src={music} alt="" />
-                    )}
+                <Card style={{ width: '19rem' }}>
+                  <a target="_blank" href={item.external_urls.spotify} rel="noopener noreferrer" className="cardImage">
+                    {!_.isEmpty(item.images) ? (<Card.Img variant="top" src={item.images[0].url} alt="playlist" />) :
+                    (<img src={defaultImage} alt="defaultImage" />)}
                   </a>
                   <Card.Body>
                     <Card.Title>{item.name}</Card.Title>
                     <Card.Text>
-                      <small>By {item.owner.display_name}</small>
+                      <p>{item.owner.display_name}</p>
                     </Card.Text>
                   </Card.Body>
                 </Card>

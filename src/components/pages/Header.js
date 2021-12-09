@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Header = () => {
-  return <h1 className="main-heading">Spotify Music Search</h1>;
+  return <h2 className="main-heading">Twoja wyszukiwarka muzyki</h2>;
 };
 
 export default Header;
