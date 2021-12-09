@@ -5,10 +5,11 @@ import { Button } from 'react-bootstrap';
 import AlbumsList from '../lists/AlbumsList';
 import ArtistsList from '../lists/ArtistsList';
 import PlayList from '../lists/PlayList';
+import TracksList from '../lists/TracksList';
 
 const MusicSearchResult = (props) => {
   const { isSessionActive, showMoreResults, result, setCategory, selectedCategory } = props;
-  const { albums, artists, playlist } = result;
+  const { albums, artists, playlist, tracks } = result;
 
   if (!isSessionActive()) {
     return (
@@ -41,6 +42,11 @@ const MusicSearchResult = (props) => {
             Listy utworów
           </button>
         )}
+        {!_.isEmpty(tracks.items) && (
+          <button className={`${ selectedCategory === 'tracks' ? 'btn active' : 'btn' }`} onClick={() => setCategory('tracks')}>
+            Utwory
+          </button>
+        )}
       </div>
       <div className={`${selectedCategory === 'albums' ? '' : 'hideElement'}`}>
         {albums && <AlbumsList albums={albums} />}
@@ -50,6 +56,9 @@ const MusicSearchResult = (props) => {
       </div>
       <div className={`${selectedCategory === 'playlist' ? '' : 'hideElement'}`}>
         {playlist && <PlayList playlist={playlist} />}
+      </div>
+      <div className={`${selectedCategory === 'tracks' ? '' : 'hideElement'}`}>
+        {tracks && <TracksList tracks={tracks} />}
       </div>
       {!_.isEmpty(result[selectedCategory]) && !_.isEmpty(result[selectedCategory].next) && (
           <div className="moreResults" onClick={() => showMoreResults(selectedCategory)}>

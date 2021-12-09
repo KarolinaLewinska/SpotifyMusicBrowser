@@ -109,7 +109,7 @@ body {
   box-shadow: none;
 }
 
-.albums, .artists, .playlist {
+.albums, .artists, .playlist, .tracks {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

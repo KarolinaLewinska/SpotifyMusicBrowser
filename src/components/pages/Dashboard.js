@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getResults, getMoreAlbums, getMoreArtists, getMorePlaylists } from '../../actions/music-results';
+import { getResults, getMoreAlbums, getMoreArtists, getMorePlaylists, getMoreTracks } from '../../actions/music-results';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import MusicSearchResult from '../searching/MusicSearchResult';
@@ -31,7 +31,7 @@ const Dashboard = (props) => {
 
   const showMoreResults = async (type) => {
     if (isSessionActive()) {
-      const { dispatch, albums, artists, playlist } = props;
+      const { dispatch, albums, artists, playlist, tracks } = props;
       setIsLoading(true);
       switch (type) {
         case 'albums':
@@ -42,6 +42,9 @@ const Dashboard = (props) => {
           break;
         case 'playlist':
           await dispatch(getMorePlaylists(playlist.next));
+          break;
+        case 'tracks':
+          await dispatch(getMoreTracks(tracks.next));
           break;
         default:
       }
@@ -60,8 +63,8 @@ const Dashboard = (props) => {
     setSelectedCategory(category);
   };
 
-  const { albums, artists, playlist } = props;
-  const result = { albums, artists, playlist };
+  const { albums, artists, playlist, tracks } = props;
+  const result = { albums, artists, playlist, tracks };
 
   return (
     <React.Fragment>
@@ -90,7 +93,8 @@ const mapStateToProps = (state) => {
   return {
     albums: state.albums,
     artists: state.artists,
-    playlist: state.playlist
+    playlist: state.playlist,
+    tracks: state.tracks
   };
 };
 
