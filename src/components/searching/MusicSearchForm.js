@@ -17,7 +17,7 @@ const MusicSearchForm = (props) => {
       setErrorMsg('');
       props.handleMusicSearch(searchedMusic);
     } else {
-      setErrorMsg('Wprowadź nazwę albumu, wykonawcy lub listy utworów');
+      setErrorMsg('Nie podano żadnej nazwy!');
     }
   };
 
@@ -26,7 +26,7 @@ const MusicSearchForm = (props) => {
       <Form onSubmit={handleMusicSearch}>
         {errorMessage && <p className="errorMessage">{errorMessage}</p>}
         <Form.Group controlId="form">
-          <Form.Label>Wprowadź nazwę albumu, wykonawcy lub listy utworów</Form.Label>
+          <Form.Label>Wprowadź nazwę albumu, wykonawcy, utworu lub listy utworów</Form.Label>
           <Form.Control type="search" name="searchedMusic" value={searchedMusic} onChange={handleInputChange}/>
         </Form.Group>
         <Button variant="info" type="submit">Wyszukaj</Button>
