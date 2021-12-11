@@ -7,7 +7,8 @@ import Redirection from './Redirection';
 
 class AppRouter extends React.Component {
   state = {
-    expirationTime: '0'
+    expirationTime: '0',
+    loggedOut: false
   };
 
   componentDidMount() {
@@ -23,13 +24,18 @@ class AppRouter extends React.Component {
   setExpirationTime = (expirationTime) => {
     this.setState({ expirationTime });
   };
+  
+  setLoggedOut = (isLoggedOut) => {
+    this.setState({ loggedOut: isLoggedOut })
+  }
 
   isSessionActive = () => {
     const currentTime = new Date().getTime();
     const expirationTime = this.state.expirationTime;
+    const loggedOut = this.state.loggedOut;
     const isSessionValid = currentTime < expirationTime;
 
-    return isSessionValid;
+    return isSessionValid && !loggedOut;
   };
 
   render() {
@@ -41,7 +47,8 @@ class AppRouter extends React.Component {
               path="/"
               exact={true}
               render={(props) => (
-                <Home isSessionActive={this.isSessionActive} {...props} />
+                <Home 
+                isSessionActive={this.isSessionActive} {...props} />
               )}
             />
             <Route
@@ -57,7 +64,10 @@ class AppRouter extends React.Component {
             <Route
               path="/dashboard"
               render={(props) => (
-                <Dashboard isSessionActive={this.isSessionActive} {...props} />
+                <Dashboard 
+                isSessionActive={this.isSessionActive}
+                setLoggedOut={this.setLoggedOut} 
+                {...props} />
               )}
             />
             <Route component={NotFoundErrorPage} />

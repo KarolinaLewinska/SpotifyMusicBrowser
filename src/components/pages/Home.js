@@ -24,7 +24,7 @@ const Home = (props) => {
           {sessionExpired && (<Alert variant="info">Twoja sesja wygasła. Zaloguj się ponownie</Alert>)}
           <Button variant="info" type="submit" onClick={handleLogin}>Zaloguj się</Button>
         </div>
-      )}
+      )} 
     </React.Fragment>
   );
 };
