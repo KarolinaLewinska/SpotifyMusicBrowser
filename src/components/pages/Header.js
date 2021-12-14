@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Header = () => {
-  return <h2 className="main-heading">Twoja wyszukiwarka muzyki</h2>;
+  return (
+  <div>
+  <h2 className="main-heading">Spotify Music Search</h2>
+  </div>
+  );
 };
 
 export default Header;
