@@ -1,9 +1,10 @@
 # Wyszukiwarka muzyki Spotify
 
-Projekt na zaliczenie przedmiotu **Programowanie aplikacji formatkowych** oraz **Aplikacje webowe dla urządzeń mobilnych**.
-Autorzy: **Aleksandra Okrój, Karolina Lewińska**
-Grupa: **S32-32**
+Projekt na zaliczenie przedmiotu **Programowanie aplikacji formatkowych** oraz **Aplikacje webowe dla urządzeń mobilnych**.<br/>
+Autorzy: **Aleksandra Okrój, Karolina Lewińska**<br/>
+Grupa: **S32-32**<br/>
 
+## Opis projektu
 - Wykorzystanie API serwisu Spotify,
 - Wyszukiwanie wykonawców, albumów, utworów oraz list utworów,
 - Paginacja strony (możliwość wyświetlenia większej liczby wyników),
@@ -17,4 +18,6 @@ Grupa: **S32-32**
 - Dedykowana strona błędu (błąd 404),
 - Zastosowanie grafik ze strony: https://undraw.co/illustrations
 - Mechanizm routingu,
-- Zastosowanie biblioteki **React-Bootstrap**
+- Zastosowanie biblioteki **React-Bootstrap**.
+
+## Wygląd interfejsów
