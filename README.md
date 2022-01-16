@@ -15,6 +15,6 @@ Grupa: **S32-32**
   - wynik wyszukiwania (w przypadku braku wyników wyświetla się komunikat informacyjny),
 - Mechanizm uwierzytelniania (logowanie się, wylogowanie się, sesja),
 - Dedykowana strona błędu (błąd 404),
-- Zastosowanie grafik ze strony: 
+- Zastosowanie grafik ze strony: https://undraw.co/illustrations
 - Mechanizm routingu,
 - Zastosowanie biblioteki **React-Bootstrap**
