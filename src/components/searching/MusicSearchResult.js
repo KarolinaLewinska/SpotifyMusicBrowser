@@ -1,24 +1,31 @@
-import React from 'react';
-import _ from 'lodash';
-import { Redirect } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import AlbumsList from '../lists/AlbumsList';
-import ArtistsList from '../lists/ArtistsList';
-import PlayList from '../lists/PlayList';
-import TracksList from '../lists/TracksList';
+import React from "react";
+import _ from "lodash";
+import { Redirect } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import AlbumsList from "../lists/AlbumsList";
+import ArtistsList from "../lists/ArtistsList";
+import PlayList from "../lists/PlayList";
+import TracksList from "../lists/TracksList";
 
 const MusicSearchResult = (props) => {
-  const { isSessionActive, showMoreResults, result, setCategory, selectedCategory } = props;
+  const {
+    isSessionActive,
+    showMoreResults,
+    result,
+    setCategory,
+    selectedCategory,
+    buttonClicked,
+  } = props;
   const { albums, artists, playlist, tracks } = result;
 
   if (!isSessionActive()) {
     return (
       <Redirect
         to={{
-          pathname: '/',
+          pathname: "/",
           state: {
-            session_expired: true
-          }
+            session_expired: true,
+          },
         }}
       />
     );
@@ -28,43 +35,80 @@ const MusicSearchResult = (props) => {
     <React.Fragment>
       <div className="searchButtons">
         {!_.isEmpty(albums.items) && (
-          <button className={`${ selectedCategory === 'albums' ? 'btn active' : 'btn' }`} onClick={() => setCategory('albums')}>
+          <button
+            className={`${
+              selectedCategory === "albums" ? "btn active" : "btn"
+            }`}
+            onClick={() => setCategory("albums")}
+          >
             Albumy
           </button>
         )}
         {!_.isEmpty(artists.items) && (
-          <button className={`${ selectedCategory === 'artists' ? 'btn active' : 'btn' }`} onClick={() => setCategory('artists')}>
+          <button
+            className={`${
+              selectedCategory === "artists" ? "btn active" : "btn"
+            }`}
+            onClick={() => setCategory("artists")}
+          >
             Artyści
           </button>
         )}
         {!_.isEmpty(playlist.items) && (
-          <button className={`${ selectedCategory === 'playlist' ? 'btn active' : 'btn' }`} onClick={() => setCategory('playlist')}>
+          <button
+            className={`${
+              selectedCategory === "playlist" ? "btn active" : "btn"
+            }`}
+            onClick={() => setCategory("playlist")}
+          >
             Listy utworów
           </button>
         )}
         {!_.isEmpty(tracks.items) && (
-          <button className={`${ selectedCategory === 'tracks' ? 'btn active' : 'btn' }`} onClick={() => setCategory('tracks')}>
+          <button
+            className={`${
+              selectedCategory === "tracks" ? "btn active" : "btn"
+            }`}
+            onClick={() => setCategory("tracks")}
+          >
             Utwory
           </button>
         )}
       </div>
-      <div className={`${selectedCategory === 'albums' ? '' : 'hideElement'}`}>
+      <div className={`${selectedCategory === "albums" ? "" : "hideElement"}`}>
         {albums && <AlbumsList albums={albums} />}
       </div>
-      <div className={`${selectedCategory === 'artists' ? '' : 'hideElement'}`}>
+      <div className={`${selectedCategory === "artists" ? "" : "hideElement"}`}>
         {artists && <ArtistsList artists={artists} />}
       </div>
-      <div className={`${selectedCategory === 'playlist' ? '' : 'hideElement'}`}>
+      <div
+        className={`${selectedCategory === "playlist" ? "" : "hideElement"}`}
+      >
         {playlist && <PlayList playlist={playlist} />}
       </div>
-      <div className={`${selectedCategory === 'tracks' ? '' : 'hideElement'}`}>
+      <div className={`${selectedCategory === "tracks" ? "" : "hideElement"}`}>
         {tracks && <TracksList tracks={tracks} />}
       </div>
-      {!_.isEmpty(result[selectedCategory]) && !_.isEmpty(result[selectedCategory].next) && (
-          <div className="moreResults" onClick={() => showMoreResults(selectedCategory)}>
-            <Button variant="info" type="button"> Więcej wyników</Button>
+      {!_.isEmpty(result[selectedCategory]) &&
+        !_.isEmpty(result[selectedCategory].next) && (
+          <div
+            className="moreResults"
+            onClick={() => showMoreResults(selectedCategory)}
+          >
+            <Button variant="info" className="default-button">
+              {" "}
+              Więcej wyników
+            </Button>
           </div>
         )}
+      {_.isEmpty(result[selectedCategory].items) && buttonClicked === true && (
+        <div className="no-results">
+          <span className="no-results-text">
+            Niestety nie udało nam się znaleźć tego czego szukasz. Spróbuj
+            ponownie lub wpisz inną nazwę
+          </span>
+        </div>
+      )}
     </React.Fragment>
   );
 };
