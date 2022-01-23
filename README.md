@@ -21,3 +21,11 @@ Grupa: **S32-32**<br/>
 - Zastosowanie biblioteki **React-Bootstrap**.
 
 ## Wygląd interfejsów
+- Strona logowania 
+![Strona logowania](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/LoginPage.PNG)
+- Wyszukiwanie 
+![Wyszukiwanie](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/SearchDashboard.PNG)
+- Rezultat wyszukiwania 
+![Rezultat Wyszukiwania](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/SearchResult.PNG)
+- Strona błędu
+![Strona błędu](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/ErrorPage.PNG)
