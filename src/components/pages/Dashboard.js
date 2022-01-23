@@ -7,11 +7,11 @@ import {
   getMoreTracks,
 } from "../../actions/music-results";
 import { connect } from "react-redux";
-import { Button } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import MusicSearchResult from "../searching/MusicSearchResult";
 import MusicSearchForm from "../searching/MusicSearchForm";
 import Loader from "./Loader";
+import Navbar from "./Navbar"
 
 const Dashboard = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -74,34 +74,11 @@ const Dashboard = (props) => {
   const { albums, artists, playlist, tracks } = props;
   const result = { albums, artists, playlist, tracks };
 
-  const logOut = () => {
-    localStorage.clear();
-    history.push({
-      pathname: "/",
-    });
-    setLoggedOut(true);
-  };
-
   return (
     <React.Fragment>
       {isSessionActive() ? (
         <div>
-          <nav className="navbar navbar-home">
-            <div className="container-fluid">
-              <a className="navbar-brand" href="/">
-                <span className="navbar-name">
-                  <i className="fab fa-spotify logo"></i>Spotify Music Search
-                </span>
-              </a>
-              <Button
-                variant="info"
-                onClick={logOut}
-                className="default-button logout-button"
-              >
-                Wyloguj się
-              </Button>
-            </div>
-          </nav>
+          <Navbar history={history} setLoggedOut={setLoggedOut} />
           <div>
             <div className="search-form">
               <MusicSearchForm handleMusicSearch={handleMusicSearch} />
