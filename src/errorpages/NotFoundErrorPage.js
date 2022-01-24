@@ -1,13 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/pages/Header';
+import Navbar from "../components/pages/Navbar";
+import Error from "../images/404Error.svg"
 
-const NotFoundErrorPage = () => {
+const NotFoundErrorPage = (props) => {
+  const { history, setLoggedOut } = props;
+
   return (
     <React.Fragment>
-      <Header />
-      <p>Nie znaleziono strony. Powróć do strony głównej.</p>
-      <Link to="/dashboard">Strona główna</Link>
+      <Navbar history={history} setLoggedOut={setLoggedOut}  />
+      <div className="error-page">
+      <img className="error-image" src={Error}/>
+      <p>Nie znaleziono strony. Powróć do <Link to="/dashboard">strony głównej</Link>.</p>
+      </div>
     </React.Fragment>
   );
 };
