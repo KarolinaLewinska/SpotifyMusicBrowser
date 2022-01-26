@@ -13,11 +13,11 @@ Co-author: **Aleksandra Okrój**<br/>
 - Usage of library **React-Bootstrap**.
 
 ## Interfaces
-- Main page
+### Main page
 ![Strona logowania](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/LoginPage.PNG)
-- Browser 
+### Browser 
 ![Wyszukiwanie](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/SearchDashboard.PNG)
-- Searching results
+### Searching results
 ![Rezultat Wyszukiwania](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/SearchResult.PNG)
-- Error page
+### Error page
 ![Strona błędu](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/ErrorPage.PNG)
