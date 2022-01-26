@@ -1,31 +1,23 @@
-# Wyszukiwarka muzyki Spotify
+# Spotify Music Browser
+Co-author: **Aleksandra Okrój**<br/>
 
-Projekt na zaliczenie przedmiotu **Programowanie aplikacji formatkowych** oraz **Aplikacje webowe dla urządzeń mobilnych**.<br/>
-Autorzy: **Aleksandra Okrój, Karolina Lewińska**<br/>
-Grupa: **S32-32**<br/>
+## Project Description
+- Usage of Spotify API,
+- Searching functionality of musicians, bands, albums, playlists and songs, 
+- Paging,
+- Components,
+- User authentication,
+- Error page 404,
+- Usage of graphics from the website: https://undraw.co/illustrations,
+- Routing,
+- Usage of library **React-Bootstrap**.
 
-## Opis projektu
-- Wykorzystanie API serwisu Spotify,
-- Wyszukiwanie wykonawców, albumów, utworów oraz list utworów,
-- Paginacja strony (możliwość wyświetlenia większej liczby wyników),
-- Zastosowanie komponentów:
-  - kafelki wyświetlające utwory, albumy, playlisty oraz artystów,
-  - loader, który informuje o pobieraniu wyników wyszukiwania,
-  - nagłówek strony,
-  - wyszukiwarka,
-  - wynik wyszukiwania (w przypadku braku wyników wyświetla się komunikat informacyjny),
-- Mechanizm uwierzytelniania (logowanie się, wylogowanie się, sesja),
-- Dedykowana strona błędu (błąd 404),
-- Zastosowanie grafik ze strony: https://undraw.co/illustrations,
-- Mechanizm routingu,
-- Zastosowanie biblioteki **React-Bootstrap**.
-
-## Wygląd interfejsów
-- Strona logowania 
+## Interfaces
+- Main page
 ![Strona logowania](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/LoginPage.PNG)
-- Wyszukiwanie 
+- Browser 
 ![Wyszukiwanie](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/SearchDashboard.PNG)
-- Rezultat wyszukiwania 
+- Searching results
 ![Rezultat Wyszukiwania](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/SearchResult.PNG)
-- Strona błędu
+- Error page
 ![Strona błędu](https://github.com/aleksandraokroj/spotify-music-app/blob/master/ReadMeImages/ErrorPage.PNG)
