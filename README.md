@@ -9,7 +9,7 @@ Grupa: **S32-32**<br/>
 - Wyszukiwanie wykonawców, albumów, utworów oraz list utworów,
 - Paginacja strony (możliwość wyświetlenia większej liczby wyników),
 - Zastosowanie komponentów:
-  - "kafelki" wyświetlające utwory, albumy, playlisty oraz artystów,
+  - kafelki wyświetlające utwory, albumy, playlisty oraz artystów,
   - loader, który informuje o pobieraniu wyników wyszukiwania,
   - nagłówek strony,
   - wyszukiwarka,
