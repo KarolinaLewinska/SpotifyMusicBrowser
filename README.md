@@ -8,7 +8,7 @@
 - Components,
 - User authentication,
 - Error page 404,
-- Usage of graphics from the website: https://undraw.co/illustrations,
+- Usage of graphics from the website: [undraw.co](https://undraw.co/illustrations),
 - Routing,
 - Usage of library **React-Bootstrap**.
 
