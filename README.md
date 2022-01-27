@@ -1,7 +1,7 @@
 # Spotify Music Browser
-Co-author: **Aleksandra Okrój**<br/>
+**Co-author:** [Aleksandra Okrój](https://github.com/aleksandraokroj)<br />
 
-## Project Description
+## Description
 - Usage of Spotify API,
 - Searching functionality of musicians, bands, albums, playlists and songs, 
 - Paging,
